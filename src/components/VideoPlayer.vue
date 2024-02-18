@@ -74,15 +74,11 @@ const updateCurrentTime = () => {
   videoRef.value.currentTime = currentTime.value
 }
 
-const toggleMute = () => {
-  console.log(videoRef.value.volume)
-  
+const toggleMute = () => { 
   if (videoRef.value.volume > 0) {
-    console.log('mute')
     videoRef.value.volume = 0
     volume.value = 0
   } else {
-    console.log('unmute')
     videoRef.value.volume = 0.5
     volume.value = 50
   }
