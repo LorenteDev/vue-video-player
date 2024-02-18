@@ -33,7 +33,7 @@ onBeforeMount(() => {
     <h1>Custom Vue Video Player</h1>
     <VideoPlayer :videoPath="videoUrl" :format="format" maxWidth="900" ref="videoPlayerRef" />
     <form @submit.prevent="">
-      <input v-model="manualVideoUrl" type="text" aria-label="Link to a video file" name="link-input" placeholder="Link to a video file" />
+      <input v-model="manualVideoUrl" type="text" aria-label="Link to a video file" name="link-input" placeholder="Link to a video file (.mp4, .webp ...)" />
       <div>
         <button @click="updateVideo">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
