@@ -1,2 +1,3 @@
 User-Agent: *
 Allow: /
+Sitemap: https://vue-video-player.vercel.app/sitemap.xml
