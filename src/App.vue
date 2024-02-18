@@ -9,17 +9,22 @@ let manualVideoUrl:Ref<string> = ref('')
 let format:Ref<string> = ref('')
 const restartButtonRef = ref()
 
-// const linkRegExpString:string = '^(?![^\n]*\.$)(?:https?:\/\/)?(?:(?:[2][1-4]\d|25[1-5]|1\d{2}|[1-9]\d|[1-9])(?:\.(?:[2][1-4]\d|25[1-5]|1\d{2}|[1-9]\d|[0-9])){3}(?::\d{4})?|[a-z\-]+(?:\.[a-z\-]+){2,})$'
-// const linkRegExp:RegExp = new RegExp(linkRegExpString, 'g')
+const linkRegExp:RegExp = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
 
 const updateVideo = () => {
-  videoUrl.value = manualVideoUrl.value
-  format.value = manualVideoUrl.value.split('.').slice(-1)[0]
+  console.log(linkRegExp.source)
+  if (linkRegExp.test(manualVideoUrl.value)) {
+    videoUrl.value = manualVideoUrl.value
+    format.value = manualVideoUrl.value.split('.').slice(-1)[0]
+  } else {
+    alert(`Make sure it's a link to a video file`)
+  }
 }
 
 const restartVideo = () => {
   videoUrl.value = videoFile
   format.value = videoFile.split('.').slice(-1)[0]
+  manualVideoUrl.value = ''
 }
 
 onBeforeMount(() => {
@@ -33,7 +38,7 @@ onBeforeMount(() => {
     <h1>Custom Vue Video Player</h1>
     <VideoPlayer :videoPath="videoUrl" :format="format" maxWidth="900" ref="videoPlayerRef" />
     <form @submit.prevent="">
-      <input v-model="manualVideoUrl" type="text" aria-label="Link to a video file" name="link-input" placeholder="Link to a video file (.mp4, .webp ...)" />
+      <input v-model="manualVideoUrl" type="text" aria-label="Link to a video file" name="link-input" placeholder="Link to a video file (like .mp4)" oninvalid="this.setCustomValidity('Link a valid video file here')" :pattern="linkRegExp.source" required />
       <div>
         <button @click="updateVideo">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -115,6 +120,13 @@ form {
       box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
       outline: none;
     }
+
+    &:invalid:not(:empty) {
+      background: #B11616;
+      &::placeholder {
+        color: #FFF;
+      }
+    }
   }
 
   div {
@@ -173,10 +185,6 @@ form {
           }
         }
       }
-    }
-    
-    :invalid {
-      border: 1px solid red;
     }
   }
 
