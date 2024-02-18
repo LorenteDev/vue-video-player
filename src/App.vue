@@ -90,7 +90,17 @@ form {
   
   input {
     box-sizing: border-box;
+    background: #FFF;
     width: 100%;
+    padding: 6px 8px;
+    border-radius: 4px;
+
+    &:focus {
+      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+      -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+      box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+      outline: none;
+    }
   }
 
   div {
@@ -119,6 +129,13 @@ form {
 
       &:hover {
         background-color: #eb2416;
+      }
+
+      &:focus {
+        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+        -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+        box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
+        outline: none;
       }
 
       &:first-child {
