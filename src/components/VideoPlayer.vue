@@ -218,10 +218,10 @@ onUnmounted(() => {
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="#FFF"/>
             </svg>
             <svg v-if="40 > volume && volume >= 5" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5" fill="#FFF"/>
+              <path d="M 3 9 L 3 15 L 7 15 L 12 20 L 12 4 L 7 9 L 3 9 Z M 16.5 12 C 16.5 10.23 15.48 8.71 14 7.97 L 14 16.02 C 15.48 15.29 16.5 13.77 16.5 12 Z M 15.142 31.934 C 15.17 32.322 14.957 32.485 14.652 32.095 C 15.606 32.547 14.738 31.97 14.891 32.287 C 15.044 32.604 14.744 31.203 14.656 31.248 L 15.116 31.7 C 15.058 31.874 15.243 32.515 15.215 31.913 C 15.187 31.311 15.561 32.065 15.142 31.934 Z" fill="#FFF"></path>
             </svg>
             <svg v-if="5 > volume && volume >= 0" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5" fill="#FFF"/>
+              <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#FFF"/>
             </svg>
           </button>
           <input @change="updateVolume" @dragstart="updateVolume" v-model="volume" type="range" min="0" max="100" value="100" orient="vertical" aria-label="Volume selector" >
@@ -420,7 +420,9 @@ onUnmounted(() => {
           margin: 0;
           height: 0;
           opacity: 0;
+          writing-mode: bt-lr;
           appearance: slider-vertical;
+          -webkit-appearance: slider-vertical;
           background: #5f5f5f;
           padding: 2px 0;
           transition: all 0.2s ease-in-out;
