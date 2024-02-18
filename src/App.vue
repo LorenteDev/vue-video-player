@@ -12,7 +12,6 @@ const restartButtonRef = ref()
 const linkRegExp:RegExp = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
 
 const updateVideo = () => {
-  console.log(linkRegExp.source)
   if (linkRegExp.test(manualVideoUrl.value)) {
     videoUrl.value = manualVideoUrl.value
     format.value = manualVideoUrl.value.split('.').slice(-1)[0]
