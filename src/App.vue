@@ -93,6 +93,7 @@ form {
     background: #FFF;
     width: 100%;
     padding: 6px 8px;
+    border: none;
     border-radius: 4px;
 
     &:focus {
