@@ -190,10 +190,10 @@ onUnmounted(() => {
     </video>
     <div class="video-controls">
       <div class="video-controls__time">
-        <input @change="updateCurrentTime" v-model="currentTime" type="range" min="0" :max="duration" value="0" >
+        <input @change="updateCurrentTime" v-model="currentTime" type="range" min="0" :max="duration" value="0" aria-label="Progress bar" >
       </div>
       <div class="video-controls__buttons">
-        <button @click="togglePlay">
+        <button @click="togglePlay" :aria-label="isPlaying ? 'Pause' : 'Play'">
           <svg v-if="isPlaying" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="30" width="30">
             <path d="M8 19c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2v10c0 1.1.9 2 2 2zm6-12v10c0 1.1.9 2 2 2s2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2z" fill="#FFF"/>
           </svg>
@@ -201,19 +201,19 @@ onUnmounted(() => {
             <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z" fill="#FFF"/>
           </svg>
         </button>
-        <button @click="goBackwards(5)">
+        <button @click="goBackwards(5)" aria-label="Go 5 seconds backwards">
           <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
             <path d="m17.51 3.87-1.78-1.77-9.89 9.9 9.9 9.9 1.77-1.77-8.13-8.13z" fill="#FFF"/>
           </svg>
         </button>
-        <button @click="goForwards(5)">
+        <button @click="goForwards(5)" aria-label="Go 5 seconds forwards">
           <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" transform="scale(-1, 1)  translate(0, 0)">
             <path d="m17.51 3.87-1.78-1.77-9.89 9.9 9.9 9.9 1.77-1.77-8.13-8.13z" fill="#FFF"/>
           </svg>
         </button>
         <!-- <button @click="stop">Stop</button> -->
         <div class="video-controls__volume">
-          <button @click="toggleMute">
+          <button @click="toggleMute" aria-label="Volume">
             <svg v-if="volume >= 40" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="#FFF"/>
             </svg>
@@ -224,15 +224,15 @@ onUnmounted(() => {
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5" fill="#FFF"/>
             </svg>
           </button>
-          <input @change="updateVolume" @dragstart="updateVolume" v-model="volume" type="range" min="0" max="100" value="100" orient="vertical" >
+          <input @change="updateVolume" @dragstart="updateVolume" v-model="volume" type="range" min="0" max="100" value="100" orient="vertical" aria-label="Volume selector" >
         </div>
-        <button @click="togglePlaybackRate">
+        <button @click="togglePlaybackRate" aria-label="Playback rate">
           <span>
             x{{ playbackRate }}
           </span>
         </button>
         <span>{{ formatTime(currentTime) }}/{{ formatTime(duration) }}</span>
-        <button @click="toggleFullscreen">
+        <button @click="toggleFullscreen" aria-label="Toggle fullscreen">
           <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
             <g fill="#FFF">
               <path d="m5 6c0-.55228.44772-1 1-1h2c.55228 0 1-.44772 1-1s-.44772-1-1-1h-2c-1.65685 0-3 1.34315-3 3v2c0 .55228.44772 1 1 1s1-.44772 1-1z"/>
