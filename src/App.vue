@@ -91,37 +91,41 @@ onBeforeMount(() => {
 section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 16px;
+  font-size: 32px;
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 32px;
   width: 100%;
   
   input {
+    font-family: "Inter", sans-serif;
     box-sizing: border-box;
     background: #FFF;
     width: 100%;
-    padding: 6px 8px;
+    padding: 8px 16px;
     border: none;
     border-radius: 4px;
+    transition: all 0.2s;
 
-    &:focus {
-      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-      -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-      box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-      outline: none;
+    &:focus-visible {
+      outline-style: solid;
+      outline-color: #8E130B;
+      outline-width: 2px;
+      outline-offset: 2px;
     }
 
     &:invalid:not(:empty) {
-      background: #B11616;
+      background: #A11212;
       &::placeholder {
         color: #FFF;
       }
@@ -130,7 +134,7 @@ form {
 
   div {
     display: flex;
-    gap: 8px;
+    gap: 16px;
 
     button {
       display: flex;
@@ -138,13 +142,15 @@ form {
       align-items: center;
       gap: 4px;
       font-family: "Inter", sans-serif;
-      padding: 4px 12px;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 16px;
       border: none;
-      background-color: #B11616;
+      background-color: #A11212;
       color: #FFF;
-      border-radius: 4px;
+      border-radius: 6px;
       transition: all 0.2s;
-      width: 120px;
+      width: 140px;
 
       svg {
         width: 20px;
@@ -156,11 +162,9 @@ form {
         background-color: #8E130B;
       }
 
-      &:focus {
-        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-        -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-        box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,1);
-        outline: none;
+      &:focus-visible {
+        outline-style: solid;
+        outline-color: #FFF;
       }
 
       &:first-child {
@@ -206,20 +210,31 @@ footer {
     padding: 0;
     margin: 0;
     gap: 8px;
-  
-    a {
-      &:hover {
-        path {
-          filter: brightness(0.6) ;
+
+    li {
+      a {
+        display: block;
+
+        &:hover {
+          path {
+            filter: brightness(0.6) ;
+          }
         }
-      }
-  
-      svg {
-        width: 35px;
-        height: 35px;
-  
-        path {
-          transition: all 0.2s;
+
+        &:focus-visible {
+          outline-style: solid;
+          outline-color: #8E130B;
+          outline-width: 2px;
+          outline-offset: 2px;
+        }
+    
+        svg {
+          width: 35px;
+          height: 35px;
+    
+          path {
+            transition: all 0.2s;
+          }
         }
       }
     }

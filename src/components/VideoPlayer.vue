@@ -238,6 +238,14 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+
+*:focus-visible {
+  outline-style: solid;
+  outline-color: #8E130B;
+  outline-width: 2px;
+  outline-offset: 0px;
+}
+
 .video-player-container {
   display: flex;
   align-items: center;
