@@ -58,5 +58,10 @@ Build the project for production:
    ```bash
    npm run build
    ```
+The production-ready files will be generated in the `dist` directory.  
 
-The production-ready files will be generated in the `dist` directory.
+Run the built project:
+
+   ```bash
+   npm run preview
+   ```
