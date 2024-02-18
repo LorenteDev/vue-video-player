@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build && npm run copy-files",
+    "build": "vue-tsc && vite build && npm run copy-sitemap && npm run copy-robots",
     "preview": "vite preview",
-    "copy-files": "copyfiles robots.txt dist"
+    "copy-sitemap": "copyfiles sitemap.xml dist",
+    "copy-robots": "copyfiles robots.txt dist"
   },
   "dependencies": {
     "vue": "^3.4.15"
