@@ -56,11 +56,6 @@ const pause = () => {
   isPlaying = false
 }
 
-// const stop = () => {
-//   videoRef.value.currentTime = 0
-//   pause()
-// }
-
 const togglePlaybackRate = () => {
   if (playbackRate.value === 2) {
     playbackRate.value = 0.25
@@ -211,7 +206,6 @@ onUnmounted(() => {
             <path d="m17.51 3.87-1.78-1.77-9.89 9.9 9.9 9.9 1.77-1.77-8.13-8.13z" fill="#FFF"/>
           </svg>
         </button>
-        <!-- <button @click="stop">Stop</button> -->
         <div class="video-controls__volume">
           <button @click="toggleMute" aria-label="Volume">
             <svg v-if="volume >= 40" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -259,7 +253,6 @@ onUnmounted(() => {
 
   &:hover,
   &:focus {
-
     .video-controls {
       bottom: 0;
       opacity: 1;
