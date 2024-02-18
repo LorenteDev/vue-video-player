@@ -4,7 +4,9 @@
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
+
+  background: radial-gradient(closest-side, #6e6e6e, #242424);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,5 +31,13 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 750px) {
+  #app {
+    padding: 0 12px;
+  }
 }
