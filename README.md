@@ -1,4 +1,4 @@
-# Custom Video Player 📺
+# Custom Vue Video Player 📺
 
 ## Overview
 
