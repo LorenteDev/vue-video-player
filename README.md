@@ -4,7 +4,7 @@
 
 This project brings you a custom video player created with Vue 3, Vite, and TypeScript.
 
-<img src="src/assets/screenshot.png" width=450px />
+<img src="https://i.ibb.co/7Sfjv5d/image.png" width=450px />
 
 
 ## Features
