@@ -122,54 +122,63 @@ const toggleFullscreen = () => {
   }
 }
 
+// Event functions
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === " " || e.code.toLowerCase() === "space" || e.keyCode == 32) {
+    togglePlay()
+  }
+}
+
+const handleTimeUpdate = () => {
+  currentTime.value = videoRef.value.currentTime
+}
+
+const handleLoadStart = () => {
+  volume.value = videoRef.value.volume * 100
+}
+
+const handleEnded = () => {
+  pause()
+}
+
+const handleContextMenu = (event: MouseEvent) => {
+  event.preventDefault()
+}
+
+const handleFullscreenChange = () => {
+  if (document.fullscreenElement) {
+    containerRef.value.style.maxWidth = 'unset'
+    containerRef.value.style.width = '100vw'
+    videoRef.value.style.width = '100vw'
+  } else {
+    containerRef.value.style.maxWidth = props.maxWidth
+    containerRef.value.style.width = null
+    videoRef.value.style = null
+  }
+}
+
 watch(() => props.videoPath, () => {
   videoRef.value.load()
   pause()
 })
 
 onMounted(() => {
-  window.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === " " || e.code.toLowerCase() === "space" || e.keyCode == 32) {
-      togglePlay()
-    }
-  })
-
-  videoRef.value.addEventListener('timeupdate', () => {
-    currentTime.value = videoRef.value.currentTime
-  })
-
-  videoRef.value.addEventListener('loadstart', () => {
-    volume.value = videoRef.value.volume * 100
-  })
-
-  videoRef.value.addEventListener('ended', () => {
-    pause()
-  })
-
-  containerRef.value.addEventListener('contextmenu', (event: MouseEvent) => {
-    event.preventDefault()
-  })
-
-  window.addEventListener("fullscreenchange", () => {
-    if (document.fullscreenElement) {
-      containerRef.value.style.maxWidth = 'unset'
-      containerRef.value.style.width = '100vw'
-      videoRef.value.style.width = '100vw'
-    } else {
-      containerRef.value.style.maxWidth = props.maxWidth
-      containerRef.value.style.width = null
-      videoRef.value.style = null
-    }
-  })
+  window.addEventListener('keydown', handleKeydown)
+  videoRef.value.addEventListener('timeupdate', handleTimeUpdate)
+  videoRef.value.addEventListener('loadstart', handleLoadStart)
+  videoRef.value.addEventListener('ended', handleEnded)
+  containerRef.value.addEventListener('contextmenu', handleContextMenu)
+  window.addEventListener("fullscreenchange", handleFullscreenChange)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', () => {})
-  videoRef.value.removeEventListener('timeupdate', () => {})
-  videoRef.value.removeEventListener('loadstart', () => {})
-  videoRef.value.removeEventListener('ended', () => {})
-  containerRef.value.removeEventListener('contextmenu', () => {})
-  window.removeEventListener('fullscreenchange', () => {})
+  window.removeEventListener('keydown', handleKeydown)
+  videoRef.value.removeEventListener('timeupdate', handleTimeUpdate)
+  videoRef.value.removeEventListener('loadstart', handleLoadStart)
+  videoRef.value.removeEventListener('ended', handleEnded)
+  containerRef.value.removeEventListener('contextmenu', handleContextMenu)
+  window.removeEventListener("fullscreenchange", handleFullscreenChange)
 })
 
 </script>
